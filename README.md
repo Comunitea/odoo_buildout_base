@@ -55,13 +55,19 @@ $ ./upgrade_openerp
 ```
 - odoo se lanza en el puerto 9069 (se pude configurar en otro)
 
+## Securizar el acceso al supervisor
+```
+$ sudo apt-get install iptables iptables-persistent
+$ sudo iptables -A INPUT -i lo -p tcp --dport 9002 -j ACCEPT
+$ sudo iptables -A INPUT -p tcp --dport 9002 -j DROP
+```
 
 ## Configurar Odoo
 Archivo de configuración: etc/openerp.cfg, si sequieren cambiar opciones en  openerp.cfg, no se debe editar el fichero,
 si no añadirlas a la sección [openerp] del buildout.cfg
 y establecer esas opciones .'add_option' = value, donde 'add_option'  y ejecutar buildout otra vez.
 
-Por ejmplo: cambiar el nivel de logging de OpenERP
+Por ejemplo: cambiar el nivel de logging de OpenERP
 ```
 'buildout.cfg'
 ...
