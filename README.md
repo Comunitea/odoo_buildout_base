@@ -57,9 +57,10 @@ $ ./upgrade_openerp
 
 ## Securizar el acceso al supervisor
 ```
-$ sudo apt-get install iptables iptables-persistent
+$ sudo apt-get install iptables
 $ sudo iptables -A INPUT -i lo -p tcp --dport 9002 -j ACCEPT
 $ sudo iptables -A INPUT -p tcp --dport 9002 -j DROP
+$ sudo apt-get install iptables-persistent (marcamos "yes" en las preguntas que nos hace al instalarse)
 ```
 
 ## Configurar Odoo
