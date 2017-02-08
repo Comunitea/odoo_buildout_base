@@ -1,0 +1,18 @@
+[databases]
+* = port=${settings:postgres_port}
+
+[pgbouncer]
+logfile = ${buildout:directory}/var/log/pgbouncer.log
+pidfile = ${buildout:directory}/var/pgbouncer.pid
+listen_addr = 127.0.0.1
+listen_port = ${settings:pgbouncer_port}
+unix_socket_dir = /tmp
+auth_type = trust
+auth_file = ${buildout:config-directory}/userlist.txt
+admin_users = ${env:USER}
+stats_users = ${env:USER}
+pool_mode = session
+server_reset_query = DISCARD ALL
+max_client_conn = ${settings:postgres_maxconn}
+default_pool_size = 20
+server_idle_timeout = ${settings:pgbouncer_idle_timeout}
