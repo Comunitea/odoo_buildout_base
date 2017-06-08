@@ -1,5 +1,5 @@
 # Buildout base para proyectos con Odoo y PostgreSQL
-Odoo 8.0 en el base, PostgreSQL 9.5.2 y Supervisord 3.0
+Odoo 10.0 en el base, PostgreSQL 9.5.2 y Supervisord 3.0
 - Buildout crea cron para iniciar Supervisord después de reiniciar (esto no lo he probado)
 - Supervisor ejecuta PostgreSQL, más info http://supervisord.org/
 - También ejecuta la instancia de PostgreSQL
@@ -51,7 +51,7 @@ $ bin/buildout -c [archivo_buildout]
 - Si fuera necesario hacer update all, se puede parar desde el supervisor y en la consola hacer:
 ```
 $ cd bin
-$ ./upgrade_openerp
+$ ./upgrade_odoo
 ```
 - odoo se lanza en el puerto 9069 (se pude configurar en otro)
 
@@ -64,24 +64,24 @@ $ sudo apt-get install iptables-persistent (marcamos "yes" en las preguntas que 
 ```
 
 ## Configurar Odoo
-Archivo de configuración: etc/openerp.cfg, si sequieren cambiar opciones en  openerp.cfg, no se debe editar el fichero,
-si no añadirlas a la sección [openerp] del buildout.cfg
+Archivo de configuración: etc/odoo.cfg, si sequieren cambiar opciones en  odoo.cfg, no se debe editar el fichero,
+si no añadirlas a la sección [odoo] del buildout.cfg
 y establecer esas opciones .'add_option' = value, donde 'add_option'  y ejecutar buildout otra vez.
 
-Por ejemplo: cambiar el nivel de logging de OpenERP
+Por ejemplo: cambiar el nivel de logging de odoo
 ```
 'buildout.cfg'
 ...
-[openerp]
+[odoo]
 options.log_handler = [':ERROR']
 ...
 ```
 
-Si se quiere ejecutar más de una instancia de OpenERP, se deben cambiar los puertos,
+Si se quiere ejecutar más de una instancia de odoo, se deben cambiar los puertos,
 please change ports:
 ```
-openerp_xmlrpc_port = 9069  (8069 default openerp)
-openerp_xmlrpcs_port = 9071 (8071 default openerp)
+odoo_xmlrpc_port = 9069  (8069 default odoo)
+odoo_xmlrpcs_port = 9071 (8071 default odoo)
 supervisor_port = 9002      (9001 default supervisord)
 postgres_port = 5434        (5432 default postgres)
 ```
