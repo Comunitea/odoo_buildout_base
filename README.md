@@ -1,5 +1,5 @@
 # Buildout base para proyectos con Odoo y PostgreSQL
-Odoo 10.0 en el base, PostgreSQL 9.5.2 y Supervisord 3.0
+Odoo 10.0 en el base, PostgreSQL 10.3 y Supervisord 3.0
 - Buildout crea cron para iniciar Supervisord después de reiniciar (esto no lo he probado)
 - Supervisor ejecuta PostgreSQL, más info http://supervisord.org/
 - También ejecuta la instancia de PostgreSQL
@@ -31,7 +31,7 @@ $ sudo apt-get install libreadline-dev
 - Crear un virtualenv dentro de la carpeta del respositorio. Esto podría ser opcional, obligatorio para desarrollo o servidor de pruebas, tal vez podríamos no hacerlo para un despliegue en producción. Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
-$ virtualenv sandbox --no-setuptools
+$ virtualenv sandbox
 ```
 - Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
 ```
