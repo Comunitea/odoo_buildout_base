@@ -21,9 +21,21 @@
                             <label for="name" class="oe_edit_only" string="Name" />
                             <h1><field name="name" /></h1>
                         </div>
-                        <separator string="General" colspan="2" />
-                        <group colspan="2" col="2">
+                        <group string="General">
                             <field name="description" placeholder="Idea description..." />
+                            <field name="dificulty"/>
+                            <field name="type_id"/>
+                            <field name="responsible_id"/>
+                        </group>
+                        <group string="Sessions">
+                            <field name="session_ids" nolabel="1">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="duration"/>
+                                </tree>
+                                
+                            </field>
                         </group>
                     </sheet>
                 </form>
@@ -37,7 +49,25 @@
                 <tree>
                     <field name="name"/>
                     <field name="description"/>
+                    <field name="dificulty"/>
                 </tree>
+            </field>
+        </record>
+
+         <record model="ir.ui.view" id="course_search_view">
+            <field name="name">course.form.view.search</field>
+            <field name="model">openacademy.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <filter name="easy_dificulty" string="Easy" domain="[('dificulty','=','easy')]"/>
+                    <filter name="medium_dificulty" string="Medium" domain="[('dificulty','=','medium')]"/>
+                    <group name="group_by" string="Group By"> 
+                        <filter string="Dificulty" context="{'group_by': 'dificulty'}"/>
+                    </group>
+
+                </search>
             </field>
         </record>
 
