@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.ui.view" id = "course_form_view">
+
+            <field name="name">course.form.view</field>
+            <field name="model">openacademy.course</field>
+            <field name="arch" type="xml">
+                <form string="Course">
+                    <header>
+                        <button string="Confirm" type="object" name="action_mi_action"
+                                 class="oe_highlight" />
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <label for="name" class="oe_edit_only" string="Name" />
+                            <h1><field name="name" /></h1>
+                        </div>
+                        <separator string="General" colspan="2" />
+                        <group colspan="2" col="2">
+                            <field name="description" placeholder="Idea description..." />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="course_tree_view">
+            <field name="name">course.form.view</field>
+            <field name="model">openacademy.course</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="course_list_action">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first course
+                </p>
+
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="course_list_action">
+            <field name="name">Courses</field>
+            <field name="res_model">openacademy.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first course
+                </p>
+
+            </field>
+        </record>
+
+
+        <menuitem id="main_openacademy_menu" name="Open Academy"/>
+
+        <menuitem id="openacademy_menu" name="Open Academy"
+                  parent="main_openacademy_menu"/>
+        <menuitem id="openacademy_settings_name" name="Settings"
+                  parent="main_openacademy_menu"/>
+
+
+        <menuitem id="courses_menu" name="Courses" parent="openacademy_menu"
+                  action="course_list_action"/>
+
+
+
+    </data>
+</odoo>

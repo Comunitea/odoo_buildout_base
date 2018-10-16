@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id = "course_type_tree_view">
+            <field name="name">course.form.view</field>
+            <field name="model">openacademy.course.type</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="course_type_list_action">
+            <field name="name">Types</field>
+            <field name="res_model">openacademy.course.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first course
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="openacademy_settings_name" name="Settings"
+                  parent="main_openacademy_menu"/>
+
+
+        <menuitem id="courses_type_menu" name="Courses" parent="openacademy_settings_name"
+                  action="course_type_list_action"/>
+
+
+    </data>
+</odoo>
