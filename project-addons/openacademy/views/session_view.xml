@@ -23,6 +23,9 @@
                             <field name="num_places"/>
                             <field name="ocupation" widget="progressbar"/>
                         </group>
+                        <group>
+                            <field name="active"/>
+                        </group>
                         <group string="Assistants">
                             <field name="partner_ids" nolabel="1">
                                 <tree>
