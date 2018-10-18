@@ -2,7 +2,7 @@
 
 
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 
 class Session(models.Model):
@@ -32,7 +32,33 @@ class Session(models.Model):
                                    domain=[('customer', '=', True)],
                                    copy=False)
     ocupation = fields.Float('Ocupation', compute='_get_ocupation')
-    active = fields.Boolean('Active', default=True)
+    active = fields.Boolean(default=True)
+    state = fields.Selection(
+        [('preparation', 'In preparation'),
+         ('open', 'Open registration'),
+         ('completed', 'Completed'), ('cancel', 'cancel')],
+        default='preparation')
+
+    def action_open(self):
+        """
+            Cambiamos de preparation a open
+        """
+        self.write({'state': 'open'})
+
+
+    def action_complete(self):
+        """
+            Cambiamos de open a completed
+        """
+        self.write({'state': 'completed'})
+
+    def action_cancel(self):
+        """
+            Cambiamos de completed a cancel
+        """
+        if self.state == 'completed':
+            raise UserError(_('cannot cancel a completed session'))
+        self.write({'state': 'cancel'})
 
     @api.onchange('num_places', 'partner_ids')
     def ochange_num_places_assistants(self):
@@ -63,3 +89,11 @@ class Session(models.Model):
             if session.partner_id.id in session.partner_ids.ids:
                 raise ValidationError(
                     _('Partner %s can not be in assistants' % session.partner_id.name))
+
+    @api.multi
+    def unlink(self):
+        self2 = self.env['openacademy.session']
+        for session in self:
+            if session.state not in ('open', 'completed'):
+                self2 += session
+        res = super(Session, self2).unlink()

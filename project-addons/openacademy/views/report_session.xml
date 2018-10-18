@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2018 Comunitea
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <data>
+
+        <report
+            id="open_academy_session_report"
+            model="openacademy.session"
+            string="Session report"
+            report_type="qweb-pdf"
+            name="openacademy.session_report_document"
+            file="openacademy.session_report_document"/>
+
+        <template id="session_report_document">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <h1 t-field="o.course_id.name"></h1>
+                            <h2 t-field="o.name"></h2>
+
+                            <div class="row">
+                                <div t-if="o.partner_id" class="col-xs-3">
+                                    <strong>Teacher</strong>
+                                    <p t-field="o.partner_id.name"/>
+                                </div>
+                                <div class="col-xs-3">
+                                    <strong>Date</strong>
+                                    <p t-field="o.date"/>
+                                </div>
+                                <div class="col-xs-3">
+                                    <strong>Nº places</strong>
+                                    <p t-field="o.num_places"/>
+                                </div>
+                            </div>
+                            <t t-set="has_comments" t-value="any([x.comment for x in o.partner_ids])" />
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th t-if="has_comments">Notes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.partner_ids" t-as="partner">
+                                        <td><span t-field="partner.name"/></td>
+                                        <td t-if="has_comments"><span t-field="partner.comment"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

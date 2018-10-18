@@ -17,6 +17,7 @@ class Course(models.Model):
     type_id = fields.Many2one('openacademy.course.type', 'Type', required=True)
     responsible_id = fields.Many2one('res.users', 'Responsible', required=True)
     session_ids = fields.One2many('openacademy.session', 'course_id')
+    product_id = fields.Many2one('product.product', 'Product', domain="[('type', '=', 'service')]")
 
     _sql_constraints = [
         ('name_unique',

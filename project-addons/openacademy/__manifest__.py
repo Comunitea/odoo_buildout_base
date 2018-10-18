@@ -21,7 +21,7 @@
     'version': '0.1',
     'license': 'AGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'product'],
 
     # always loaded
     'data': [
@@ -31,6 +31,7 @@
         'views/course_type.xml',
         'views/session_view.xml',
         'views/res_partner_view.xml',
+        'views/report_session.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

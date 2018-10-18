@@ -14,7 +14,7 @@
                 <form string="Course">
                     <header>
                         <button string="Confirm" type="object" name="action_mi_action"
-                                 class="oe_highlight" />
+                                 class="btn-primary" />
                     </header>
                     <sheet>
                         <div class="oe_title">
@@ -26,6 +26,7 @@
                             <field name="dificulty"/>
                             <field name="type_id"/>
                             <field name="responsible_id"/>
+                            <field name="product_id" nocreate="1" noedit="1"/>
                         </group>
                         <group string="Sessions">
                             <field name="session_ids" nolabel="1">
@@ -34,7 +35,7 @@
                                     <field name="date"/>
                                     <field name="duration"/>
                                 </tree>
-                                
+
                             </field>
                         </group>
                     </sheet>
@@ -63,7 +64,7 @@
                     <field name="description"/>
                     <filter name="easy_dificulty" string="Easy" domain="[('dificulty','=','easy')]"/>
                     <filter name="medium_dificulty" string="Medium" domain="[('dificulty','=','medium')]"/>
-                    <group name="group_by" string="Group By"> 
+                    <group name="group_by" string="Group By">
                         <filter string="Dificulty" context="{'group_by': 'dificulty'}"/>
                     </group>
 
