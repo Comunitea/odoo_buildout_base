@@ -21,7 +21,7 @@
     'version': '0.1',
     'license': 'AGPL-3',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'product'],
+    'depends': ['base', 'product', 'mail'],
 
     # always loaded
     'data': [
@@ -31,7 +31,11 @@
         'views/course_type.xml',
         'views/session_view.xml',
         'views/res_partner_view.xml',
-        'views/report_session.xml'
+        'views/report_session.xml',
+        'views/res_users_view.xml',
+        'security/openacademy_security.xml',
+        'security/ir.model.access.csv',
+        'wizard/assistants_selector_wzd_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

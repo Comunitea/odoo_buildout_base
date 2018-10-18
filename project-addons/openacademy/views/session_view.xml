@@ -21,7 +21,7 @@
                             <h1><field name="name" /></h1>
                         </div>
                         <group string="General">
-                            <field name="partner_id"/>
+                            <field name="professor_id"/>
                             <field name="date"/>
                             <field name="duration"/>
                             <field name="course_id"/>
@@ -41,6 +41,10 @@
                             </field>
                         </group>
                     </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>

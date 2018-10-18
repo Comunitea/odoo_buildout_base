@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+
+        <record model="openacademy.course.type" id="course_type_01">
+            <field name="code">INF</field>
+            <field name="description">INFORMATICA</field>
+            <field name="name">Informática</field>
+        </record>
+
         <record model="openacademy.course" id="course_01">
             <field name="name">1º SeR</field>
             <field name="description">1º Sistemas en RED</field>
+            <field name="type_id" ref="course_type_01"/>
         </record>
         <record model="openacademy.course" id="course_02">
             <field name="name">2º SeR</field>
             <field name="description">2º Sistemas en Red</field>
+            <field name="type_id" ref="course_type_01"/>
         </record>
-        <record model="openacademy.course.type" id="course_type_01">
-            <field name="code">INF</field>
-            <field name="description">INFORMATICA</field>
-        </record>
-
 
     </data>
 </odoo>

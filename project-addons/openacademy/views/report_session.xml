@@ -5,13 +5,6 @@
 <odoo>
     <data>
 
-        <report
-            id="open_academy_session_report"
-            model="openacademy.session"
-            string="Session report"
-            report_type="qweb-pdf"
-            name="openacademy.session_report_document"
-            file="openacademy.session_report_document"/>
 
         <template id="session_report_document">
             <t t-call="report.html_container">
@@ -55,6 +48,22 @@
                 </t>
             </t>
         </template>
+
+        <template id="session_report">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                        <t t-call="openacademy.session_report_document" t-lang="doc.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+        <report
+            id="open_academy_session_report"
+            model="openacademy.session"
+            string="Session report"
+            report_type="qweb-pdf"
+            name="openacademy.session_report"
+            file="openacademy.session_report"/>
 
     </data>
 </odoo>

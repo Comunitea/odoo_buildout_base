@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id = "assistants_selector_wzd_view">
+        <field name="name">openacademy.assistants.selector.wzd.form</field>
+        <field name="model">openacademy.assistants.selector.wzd</field>
+        <field name="arch" type="xml">
+            <form string="Assistants Selector">
+                <group string="Filters">
+                    <field name="is_company"/>
+                    <field name="tag_id"/>
+                    <field name="state_id"/>
+                </group>
+                <button name="action_search" string="Search" type="object"/>
+                <separator string="Results" colspan="4"/>
+                <field name="assistant_ids" colspan="4" nolabel="1"/>
+                <footer>
+                    <button name="action_set_assistants" string="Set Assistants" type="object"/>
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_assistants_selector_wzd_view" model="ir.actions.act_window">
+        <field name="name">Assistants Selector</field>
+        <field name="res_model">openacademy.assistants.selector.wzd</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="assistants_selector_wzd_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <record model="ir.values" id="action_assistants_selector_wzd_view_values">
+        <field name="model_id" ref="model_openacademy_session"/>
+        <field name="name">Assistants Selector</field>
+        <field name="key2">client_action_multi</field>
+        <field name="value" eval="'ir.actions.act_window,' +str(ref('action_assistants_selector_wzd_view'))" />
+        <field name="key">action</field>
+        <field name="model">openacademy.session</field>
+    </record>
+
+</odoo>

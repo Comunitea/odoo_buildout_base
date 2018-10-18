@@ -25,10 +25,10 @@
 
 
         <menuitem id="openacademy_settings_name" name="Settings"
-                  parent="main_openacademy_menu"/>
+                  parent="main_openacademy_menu" groups="base.group_system"/>
 
 
-        <menuitem id="courses_type_menu" name="Courses" parent="openacademy_settings_name"
+        <menuitem id="courses_type_menu" name="Course types" parent="openacademy_settings_name"
                   action="course_type_list_action"/>
 
 

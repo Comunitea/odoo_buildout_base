@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="openacademy_professor" model="res.groups">
+        <field name="name">Professor</field>
+    </record>
+
+    <record id="openacademy_session_professor" model="ir.rule">
+        <field name="name">Sessions Professor</field>
+        <field ref="model_openacademy_session" name="model_id"/>
+        <field name="domain_force">['|',('professor_id', '=', False),('professor_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('openacademy.openacademy_professor'))]"/>
+    </record>
+
+</odoo>
