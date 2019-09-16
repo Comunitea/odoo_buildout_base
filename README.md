@@ -19,6 +19,8 @@ $ deb http://apt.anybox.fr/openerp common main
 ```
 $ sudo apt-key adv --keyserver hkp://subkeys.pgp.net --recv-keys 0xE38CEB07
 ```
+Si el servidor no responde se puede cambiar por hkp://keyserver.ubuntu.com
+
 - Instalar dependencias python3 y otros paquetes adicionales
 ```
 $ sudo apt install build-essential python3-dev libxslt-dev libzip-dev libldap2-dev libsasl2-dev
